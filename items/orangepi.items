@@ -1,0 +1,2 @@
+Number Room_temperature "Температура в зале [%.2f °C]" <temperature> {mqtt="<[mosquitto:state/opi/env_temperature:state:default]"}
+Number Room_humidity "Влажность в зале [%.2f ]" <humidity> {mqtt="<[mosquitto:state/opi/env_humidity:state:default]"}

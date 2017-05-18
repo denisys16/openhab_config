@@ -1,8 +1,15 @@
 sitemap main label="Main Menu"
 {
 
-    Frame label="Wemos Controls"
+    Frame //label="Wemos Controls"
     {
-        Colorpicker item=WemosLightRGBColor icon="slider"
+        Colorpicker item=WemosLightRGBColor icon="rgb"
+    }
+    Frame //label="Orange Pi Controls"
+    {
+        Text item=Room_temperature valuecolor=[>25="orange",>19="green",<=19="blue"]
+        Text item=Room_humidity valuecolor=[>60="red",>39="green",<=39="red"]
+        Chart label="Температура в зале за неделю" item=Room_temperature period=W refresh=600000
+        Chart label="Влажность в зале за неделю" item=Room_humidity period=W refresh=600000
     }
 }
