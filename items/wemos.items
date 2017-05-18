@@ -1,0 +1,3 @@
+Group WemosLightControlsGroup "Wemos Light Controls" (All)
+Color WemosLightRGBColor "Light RGB Color" <slider> (WemosLightControlsGroup)
+String WemosLightColorRGBString (WemosLightControlsGroup) {mqtt=">[mosquitto:wemos/rgb_color:command:*:default]"}

@@ -1,0 +1,23 @@
+import org.openhab.core.library.types.*
+
+var HSBType hsbValue
+var int redValue
+var int greenValue
+var int blueValue
+var String RGBvalues
+
+rule "Set Light RGB Color value"
+    when
+        Item WemosLightRGBColor changed
+    then
+        hsbValue = WemosLightRGBColor.state as HSBType
+
+        redValue = hsbValue.red.intValue
+        greenValue = hsbValue.green.intValue
+        blueValue = hsbValue.blue.intValue
+
+        RGBvalues= redValue.toString + ";" + greenValue.toString + ";" + blueValue.toString
+        sendCommand( WemosLightColorRGBString, RGBvalues )
+
+        logInfo( "WemosLightRGBColor", RGBvalues )
+end

@@ -1,0 +1,8 @@
+sitemap main label="Main Menu"
+{
+
+    Frame label="Wemos Controls"
+    {
+        Colorpicker item=WemosLightRGBColor icon="slider"
+    }
+}
