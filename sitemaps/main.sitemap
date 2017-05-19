@@ -9,7 +9,31 @@ sitemap main label="Main Menu"
     {
         Text item=Room_temperature valuecolor=[>25="orange",>19="green",<=19="blue"]
         Text item=Room_humidity valuecolor=[>60="red",>39="green",<=39="red"]
-        Chart label="Температура в зале за неделю" item=Room_temperature period=W refresh=600000
-        Chart label="Влажность в зале за неделю" item=Room_humidity period=W refresh=600000
+
+        Switch item=Room_Chart_Period label="Период для отображения на графиках" icon="chart" mappings=[0="Час", 1="День", 2="Неделя", 3="Месяц", 4="Год"]
+
+        Image url="http://localhost:8081/rrdchart.png?items=Room_temperature&period=h&w=720" refresh=60000 visibility=[Room_Chart_Period==0, Room_Chart_Period=="NULL"]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_temperature&period=D&w=720"  refresh=60000 visibility=[Room_Chart_Period==1]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_temperature&period=W&w=720"  refresh=600000 visibility=[Room_Chart_Period==2]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_temperature&period=M&w=720"  refresh=6000000 visibility=[Room_Chart_Period==3]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_temperature&period=Y&w=720"  refresh=60000000 visibility=[Room_Chart_Period==4]
+
+        // Chart label="Температура в зале за час"    item=Room_temperature period=h refresh=6000 visibility=[Room_Chart_Period==0, Room_Chart_Period=="NULL"]
+        // Chart label="Температура в зале за день"   item=Room_temperature period=D refresh=60000 visibility=[Room_Chart_Period==1]
+        // Chart label="Температура в зале за неделю" item=Room_temperature period=W refresh=600000 visibility=[Room_Chart_Period==2]
+        // Chart label="Температура в зале за месяц"  item=Room_temperature period=M refresh=6000000 visibility=[Room_Chart_Period==3]
+        // Chart label="Температура в зале за год"    item=Room_temperature period=Y refresh=60000000 visibility=[Room_Chart_Period==4]
+
+        Image url="http://localhost:8081/rrdchart.png?items=Room_humidity&period=h&w=720" refresh=60000 visibility=[Room_Chart_Period==0, Room_Chart_Period=="NULL"]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_humidity&period=D&w=720"  refresh=60000 visibility=[Room_Chart_Period==1]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_humidity&period=W&w=720"  refresh=600000 visibility=[Room_Chart_Period==2]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_humidity&period=M&w=720"  refresh=6000000 visibility=[Room_Chart_Period==3]
+        Image url="http://localhost:8081/rrdchart.png?items=Room_humidity&period=Y&w=720"  refresh=60000000 visibility=[Room_Chart_Period==4]
+
+        // Chart label="Влажность в зале за час"      item=Room_humidity    period=h refresh=6000 visibility=[Room_Chart_Period==0, Room_Chart_Period=="NULL"]
+        // Chart label="Влажность в зале за день"     item=Room_humidity    period=D refresh=60000 visibility=[Room_Chart_Period==1]
+        // Chart label="Влажность в зале за неделю"   item=Room_humidity    period=W refresh=600000 visibility=[Room_Chart_Period==2]
+        // Chart label="Влажность в зале за месяц"    item=Room_humidity    period=M refresh=6000000 visibility=[Room_Chart_Period==3]
+        // Chart label="Влажность в зале за год"      item=Room_humidity    period=Y refresh=60000000 visibility=[Room_Chart_Period==4]
     }
 }
