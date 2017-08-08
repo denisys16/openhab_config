@@ -12,9 +12,9 @@ rule "Set Light RGB Color value"
     then
         hsbValue = WemosLightRGBColor.state as HSBType
 
-        redValue = hsbValue.red.intValue
-        greenValue = hsbValue.green.intValue
-        blueValue = hsbValue.blue.intValue
+        redValue = hsbValue.red.intValue * 255 / 100
+        greenValue = hsbValue.green.intValue * 255 / 100
+        blueValue = hsbValue.blue.intValue *255 / 100
 
         RGBvalues= redValue.toString + ";" + greenValue.toString + ";" + blueValue.toString
         sendCommand( WemosLightColorRGBString, RGBvalues )
